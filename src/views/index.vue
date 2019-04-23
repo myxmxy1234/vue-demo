@@ -28,19 +28,19 @@ export default {
                     url: [index,indexActive],
                     active: true,
                     text: '首页',
-                    path: '/home'
+                    path: '/index/home'
                 },
                 {
                     url: [message,messageActive],
                     active: false,
                     text: '消息',
-                    path: '/message'
+                    path: '/index/message'
                 },
                 {
                     url: [user, userActive],
                     active: false,
                     text: '我的',
-                    path: '/user'
+                    path: '/index/user'
                 }
             ]
         }

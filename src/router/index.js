@@ -8,25 +8,36 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/home'
+            redirect: '/index/home'
         },
         {
-            path: '/home',
-            name: 'home',
+            path: '/index',
+            name: 'index',
             component: resolve => require(['@w/home.vue'], resolve),
-            meta: { deep: 1 }
+            meta: { deep: 1 },
+            children: [
+                {
+                    path: 'home',
+                    component: resolve => require(['@w/home.vue'], resolve),
+                    meta: { deep: 2 }
+                },
+                {
+                    path: 'message',
+                    component: resolve => require(['@w/message.vue'], resolve),
+                    meta: { deep: 2 }
+                },
+                {
+                    path: 'user',
+                    component: resolve => require(['@w/user.vue'], resolve),
+                    meta: { deep: 2 }
+                },
+            ]
         },
         {
-            path: '/message',
-            name: 'message',
-            component: resolve => require(['@w/message.vue'], resolve),
-            meta: { deep: 1 }
-        },
-        {
-            path: '/user',
-            name: 'user',
-            component: resolve => require(['@w/user.vue'], resolve),
-            meta: { deep: 1 }
+            path: '/list',
+            name: 'list',
+            component: resolve => require(['@w/list.vue'], resolve),
+            meta: { deep: 3 }
         }
     ]
 })

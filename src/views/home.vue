@@ -21,6 +21,7 @@
             <div class="activities-list">
               <activity class='activity' v-for="(item, index) in activities" :key='index' :url='item.url.slice(-4)' :startTime='item.startTime' :endTime='item.endTime'></activity>
             </div>
+            <div></div>
         </div>
     </div>
   </div>
@@ -53,29 +54,29 @@ export default {
     };
   },
   mounted() {
-    this.getMoreActivities()
+    this.getAllActivities()
   },
   computed: {
-    getAllActivities: function() {
-      // getActivityList().then(res => {
-      //   if(res.data.resultCode === '000000' && res.data.data.resultCode === '000000') {
-      //     let activityList = res.data.data.resultData.filter(e => {
-      //       return e.status.toUpperCase() === 'OPENING' && e.type.toUpperCase() !== "TOOLS"
-      //     })
-      //     let toolList = res.data.data.resultData.filter(e => {
-      //       return e.status.toUpperCase() === 'OPENING' && e.type.toUpperCase() === "TOOLS"
-      //     })
 
-      //     this.activities.push(...activityList)
-      //     this.toolList.push(...toolList)
-      //   }
-      // })
-      console.log('computed')
-    }
   },
   methods: {
     getMoreActivities() {
-      console.log('methods')
+      this.$router.push('/list')
+    },
+    getAllActivities: function() {
+      getActivityList().then(res => {
+        if(res.data.resultCode === '000000' && res.data.data.resultCode === '000000') {
+          let activityList = res.data.data.resultData.filter(e => {
+            return e.status.toUpperCase() === 'OPENING' && e.type.toUpperCase() !== "TOOLS"
+          })
+          let toolList = res.data.data.resultData.filter(e => {
+            return e.status.toUpperCase() === 'OPENING' && e.type.toUpperCase() === "TOOLS"
+          })
+
+          this.activities.push(...activityList)
+          this.toolList.push(...toolList)
+        }
+      })
     }
   },
   components: {
