@@ -1,4 +1,5 @@
 const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 function resolve(dir) {
     return path.join(__dirname, dir)
@@ -24,6 +25,19 @@ module.exports = {
         .options({
             remUnit: 75
         })
+
+        config.optimization
+        .splitChunks({
+            chunks: 'all',
+            // cacheGroups: {
+
+            // }
+        });
+    },
+    configureWebpack: {
+        plugins: [
+            new BundleAnalyzerPlugin()
+        ]
     },
     devServer: {
         open: true,

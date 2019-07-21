@@ -12,7 +12,7 @@
       }
     },
     mounted() {
-      console.log('message page')
+      console.log('message mounted')
     }
   }
 </script>

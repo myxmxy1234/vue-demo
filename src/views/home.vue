@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="home-index">
     <header class="head">
       <div class="user-info">
         <img
@@ -19,7 +19,7 @@
               <a href="javascript:;" @click='getMoreActivities' class="more-activities">更多</a>
             </Title>
             <div class="activities-list">
-              <activity class='activity' v-for="(item, index) in activities" :key='index' :url='item.url.slice(-4)' :startTime='item.startTime' :endTime='item.endTime'></activity>
+              <activity class='activity' v-for="(item, index) in activities" :key='index' :url='item.url.slice(-4)' :startTime='item.startTime' :endTime='item.endTime' @click.native='enterInActivity(item.campaignId)'></activity>
             </div>
             <div></div>
         </div>
@@ -60,6 +60,9 @@ export default {
 
   },
   methods: {
+    enterInActivity(campaignId) {
+      this.$router.push({path: '/activityPage', query: {name: campaignId}})
+    },
     getMoreActivities() {
       this.$router.push('/list')
     },
@@ -82,13 +85,17 @@ export default {
   components: {
     Title,
     activity
+  },
+  beforeRouteLeave(to, from, next) {
+    next()
   }
 };
 </script>
 
 <style lang='scss' scoped>
-.index {
+.home-index {
   display: flex;
+  flex-direction: column;
   height: 100%;
   .head {
     height: 5.973333rem;

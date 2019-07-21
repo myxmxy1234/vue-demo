@@ -1,20 +1,19 @@
 <template>
   <div id="app">
-    <index></index>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Index from '@w/index.vue'
-
 export default {
-  name: 'app',
-  components: {
-    Index
-  }
-}
+  name: 'app'
+};
 </script>
 
-<style>
-
+<style scoped>
+#app {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
 </style>
