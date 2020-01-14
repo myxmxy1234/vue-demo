@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
 import 'lib-flexible'
+import vcolorpicker from 'vcolorpicker'
+Vue.use(vcolorpicker)
+
 
 import '@/css/index.scss'
 

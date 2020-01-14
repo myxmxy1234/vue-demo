@@ -56,13 +56,13 @@ export default {
     };
   },
   created() {
-    this.$showModel({
-      showLeft: true,
-      content: '今天天气不错',
-      callBack: () => {
-        console.log('clicked confirm')
-      }
-    })
+    // this.$showModel({
+    //   showLeft: true,
+    //   content: '今天天气不错',
+    //   callBack: () => {
+    //     console.log('clicked confirm')
+    //   }
+    // })
   },
   methods: {
     changeTab(index) {
